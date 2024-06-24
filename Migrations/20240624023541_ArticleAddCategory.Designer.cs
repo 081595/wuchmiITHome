@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wuchmiITHome.Data;
 
@@ -10,9 +11,11 @@ using wuchmiITHome.Data;
 namespace wuchmiITHome.Migrations
 {
     [DbContext(typeof(wuchmiITHomeContext))]
-    partial class wuchmiITHomeContextModelSnapshot : ModelSnapshot
+    [Migration("20240624023541_ArticleAddCategory")]
+    partial class ArticleAddCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -25,7 +28,6 @@ namespace wuchmiITHome.Migrations
 
                     b.Property<string>("Category")
                         .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Count")
@@ -40,7 +42,6 @@ namespace wuchmiITHome.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");

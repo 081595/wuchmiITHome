@@ -19,11 +19,21 @@ namespace wuchmiITHome.Pages_Articles
             _context = context;
         }
 
-        public IList<Article> Article { get;set; } = default!;
+        public IList<Article> Article { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
-            Article = await _context.Article.ToListAsync();
+            var articles = from a in _context.Article select a;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                articles = articles.Where(s => s.Title.Contains(SearchString));
+            }
+
+            Article = await articles.ToListAsync();
+            // Article = await _context.Article.ToListAsync();
         }
     }
 }
