@@ -36,7 +36,7 @@
 		}
 	},
 
-	"postCreateCommand": "dotnet restore && dotnet build",
+	"postCreateCommand": "if [ -f /etc/apt/sources.list.d/yarn.list ]; then sudo mv /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.list.disabled; fi && sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install && dotnet restore && dotnet build",
 
 	"remoteUser": "vscode"
 }
