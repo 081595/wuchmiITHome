@@ -22,7 +22,7 @@ namespace wuchmiITHome.Pages_Articles
         public IList<Article> Article { get; set; } = default!;
 
         [BindProperty(SupportsGet = true)]
-        public string SearchString { get; set; }
+        public string? SearchString { get; set; }
 
         public async Task OnGetAsync()
         {
