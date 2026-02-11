@@ -1,0 +1,71 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Teach Appo Employees";
+}
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-page="Create" class="btn btn-primary">Create New</a>
+        </div>
+    </div>
+
+    @if (Model.TeachAppoEmployees.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            No teach appointment employee records found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Year</th>
+                        <th>Identity Number</th>
+                        <th>Birthday</th>
+                        <th>Empl No</th>
+                        <th>Chinese Name</th>
+                        <th>English Name</th>
+                        <th>Email</th>
+                        <th>Create Date</th>
+                        <th>Update Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TeachAppoEmployees)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Yr)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IdNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Birthday, "Date")</td>
+                            <td>@Html.DisplayFor(modelItem => item.EmplNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ChName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CreateDate, "DateTime")</td>
+                            <td>@Html.DisplayFor(modelItem => item.UpdateDate, "DateTime")</td>
+                            <td>
+                                <a asp-page="Details" asp-route-yr="@item.Yr" asp-route-idNo="@item.IdNo" asp-route-birthday="@item.Birthday.ToString("yyyy-MM-dd")" class="btn btn-sm btn-info">Details</a>
+                                <a asp-page="Edit" asp-route-yr="@item.Yr" asp-route-idNo="@item.IdNo" asp-route-birthday="@item.Birthday.ToString("yyyy-MM-dd")" class="btn btn-sm btn-warning">Edit</a>
+                                <a asp-page="Delete" asp-route-yr="@item.Yr" asp-route-idNo="@item.IdNo" asp-route-birthday="@item.Birthday.ToString("yyyy-MM-dd")" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Optional: Add client-side behavior if needed
+    </script>
+}

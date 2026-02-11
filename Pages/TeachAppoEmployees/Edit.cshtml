@@ -1,0 +1,123 @@
+@page "{yr:int}/{idNo}/{birthday:datetime}"
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Teach Appo Employee";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>@ViewData["Title"]</h1>
+
+            <form method="post" class="needs-validation" novalidate>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Composite Key Fields (Immutable)</h5>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label"><strong>Year:</strong></label>
+                                <div class="form-control-plaintext">
+                                    @Html.DisplayFor(model => model.TeachAppoEmployee.Yr)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label"><strong>Identity Number:</strong></label>
+                                <div class="form-control-plaintext">
+                                    @Html.DisplayFor(model => model.TeachAppoEmployee.IdNo)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label"><strong>Birthday:</strong></label>
+                                <div class="form-control-plaintext">
+                                    @Html.DisplayFor(model => model.TeachAppoEmployee.Birthday, "Date")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning" role="alert">
+                            <small><strong>Note:</strong> The highlighted fields above are the composite primary key and cannot be changed. 
+                            To change these values, delete this record and create a new one.</small>
+                        </div>
+
+                        <hr />
+
+                        <h5 class="card-title">Employee Information</h5>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.EmplNo" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.EmplNo" class="form-control" maxlength="6" required />
+                                <span asp-validation-for="TeachAppoEmployee.EmplNo" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.ChName" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.ChName" class="form-control" maxlength="60" required />
+                                <span asp-validation-for="TeachAppoEmployee.ChName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.EnName" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.EnName" class="form-control" maxlength="60" required />
+                                <span asp-validation-for="TeachAppoEmployee.EnName" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.Email" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.Email" class="form-control" type="email" maxlength="60" required />
+                                <span asp-validation-for="TeachAppoEmployee.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.RefreshToken" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.RefreshToken" class="form-control" maxlength="60" required />
+                                <span asp-validation-for="TeachAppoEmployee.RefreshToken" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="TeachAppoEmployee.RefreshTokenExpired" class="form-label"></label>
+                                <input asp-for="TeachAppoEmployee.RefreshTokenExpired" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="TeachAppoEmployee.RefreshTokenExpired" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label"><strong>Created:</strong></label>
+                                <div class="form-control-plaintext">
+                                    <small class="text-muted">@Html.DisplayFor(model => model.TeachAppoEmployee.CreateDate, "DateTime")</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label"><strong>Last Updated:</strong></label>
+                                <div class="form-control-plaintext">
+                                    <small class="text-muted">@Html.DisplayFor(model => model.TeachAppoEmployee.UpdateDate, "DateTime")</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="card-footer bg-light">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a asp-page="Details" asp-route-yr="@Model.TeachAppoEmployee.Yr" 
+                               asp-route-idNo="@Model.TeachAppoEmployee.IdNo" 
+                               asp-route-birthday="@Model.TeachAppoEmployee.Birthday.ToString("yyyy-MM-dd")" 
+                               class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

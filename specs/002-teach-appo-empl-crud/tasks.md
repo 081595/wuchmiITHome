@@ -22,9 +22,9 @@ description: "Task list for Teach Appo Employee CRUD"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create test project in Tests/wuchmiITHome.Tests/wuchmiITHome.Tests.csproj with xUnit and ASP.NET Core test dependencies
-- [ ] T002 Add Tests/wuchmiITHome.Tests/wuchmiITHome.Tests.csproj to wuchmiITHome.sln
-- [ ] T003 [P] Add SQLite test web app factory in Tests/wuchmiITHome.Tests/TestInfrastructure/SqliteWebApplicationFactory.cs
+- [X] T001 Create test project in Tests/wuchmiITHome.Tests/wuchmiITHome.Tests.csproj with xUnit and ASP.NET Core test dependencies
+- [X] T002 Add Tests/wuchmiITHome.Tests/wuchmiITHome.Tests.csproj to wuchmiITHome.sln
+- [X] T003 [P] Add SQLite test web app factory in Tests/wuchmiITHome.Tests/TestInfrastructure/SqliteWebApplicationFactory.cs
 
 ---
 
@@ -32,13 +32,13 @@ description: "Task list for Teach Appo Employee CRUD"
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Create TeachAppoEmployee model with XML comments and data annotations in Models/TeachAppoEmployee.cs
-- [ ] T005 Add TeachAppoEmployee service layer in Services/TeachAppoEmployeeService.cs
-- [ ] T006 Update DbContext with DbSet, composite key mapping, and SQLite defaults in Data/wuchmiITHomeContext.cs
-- [ ] T007 Add create/update timestamp handling in Data/wuchmiITHomeContext.cs
-- [ ] T008 Add migration files in Migrations/20260211093000_AddTeachAppoEmployee.cs, Migrations/20260211093000_AddTeachAppoEmployee.Designer.cs, and update Migrations/wuchmiITHomeContextModelSnapshot.cs
-- [ ] T009 Add seed data for TeachAppoEmployee in Models/SeedData.cs
-- [ ] T010 Add DbContext schema/migration test in Tests/wuchmiITHome.Tests/Data/DbContextTests.cs
+- [X] T004 Create TeachAppoEmployee model with XML comments and data annotations in Models/TeachAppoEmployee.cs
+- [X] T005 Add TeachAppoEmployee service layer (per constitution Principle II - business logic in service classes) in Services/TeachAppoEmployeeService.cs
+- [X] T006 Update DbContext with DbSet, composite key mapping, and SQLite defaults in Data/wuchmiITHomeContext.cs
+- [X] T007 Add create/update timestamp handling in Data/wuchmiITHomeContext.cs
+- [X] T008 Add migration files in Migrations/20260211093000_AddTeachAppoEmployee.cs, Migrations/20260211093000_AddTeachAppoEmployee.Designer.cs, and update Migrations/wuchmiITHomeContextModelSnapshot.cs
+- [X] T009 Add seed data for TeachAppoEmployee in Models/SeedData.cs
+- [X] T010 Add DbContext schema/migration test in Tests/wuchmiITHome.Tests/Data/DbContextTests.cs
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -52,14 +52,14 @@ description: "Task list for Teach Appo Employee CRUD"
 
 ### Tests for User Story 1
 
-- [ ] T011 [P] [US1] Add list page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/ListPageTests.cs
-- [ ] T012 [P] [US1] Add details page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/DetailsPageTests.cs
+- [X] T011 [P] [US1] Add list page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/ListPageTests.cs
+- [X] T012 [P] [US1] Add details page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/DetailsPageTests.cs
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Add navigation link to the maintenance list in Pages/Shared/_Layout.cshtml
-- [ ] T014 [US1] Implement list page with `AsNoTracking()` in Pages/TeachAppoEmployees/Index.cshtml and Pages/TeachAppoEmployees/Index.cshtml.cs
-- [ ] T015 [US1] Implement details page with error handling in Pages/TeachAppoEmployees/Details.cshtml and Pages/TeachAppoEmployees/Details.cshtml.cs
+- [X] T013 [US1] Add navigation link to the maintenance list in Pages/Shared/_Layout.cshtml
+- [X] T014 [US1] Implement list page with `AsNoTracking()` in Pages/TeachAppoEmployees/Index.cshtml and Pages/TeachAppoEmployees/Index.cshtml.cs
+- [X] T015 [US1] Implement details page with error handling and timestamp display (create_date, update_date) in Pages/TeachAppoEmployees/Details.cshtml and Pages/TeachAppoEmployees/Details.cshtml.cs
 
 **Checkpoint**: User Story 1 fully functional and testable independently
 
@@ -73,11 +73,11 @@ description: "Task list for Teach Appo Employee CRUD"
 
 ### Tests for User Story 2
 
-- [ ] T016 [P] [US2] Add create page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/CreatePageTests.cs
+- [X] T016 [P] [US2] Add create page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/CreatePageTests.cs
 
 ### Implementation for User Story 2
 
-- [ ] T017 [US2] Implement create page with validation and duplicate key handling in Pages/TeachAppoEmployees/Create.cshtml and Pages/TeachAppoEmployees/Create.cshtml.cs
+- [X] T017 [US2] Implement create page with validation (including date format validation), duplicate key handling, and field-specific error messages in Pages/TeachAppoEmployees/Create.cshtml and Pages/TeachAppoEmployees/Create.cshtml.cs
 
 **Checkpoint**: User Stories 1 and 2 both work independently
 
@@ -91,13 +91,13 @@ description: "Task list for Teach Appo Employee CRUD"
 
 ### Tests for User Story 3
 
-- [ ] T018 [P] [US3] Add edit page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/EditPageTests.cs
-- [ ] T019 [P] [US3] Add delete page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/DeletePageTests.cs
+- [X] T018 [P] [US3] Add edit page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/EditPageTests.cs
+- [X] T019 [P] [US3] Add delete page tests in Tests/wuchmiITHome.Tests/TeachAppoEmployees/DeletePageTests.cs
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] Implement edit page with immutable keys, validation, and error handling in Pages/TeachAppoEmployees/Edit.cshtml and Pages/TeachAppoEmployees/Edit.cshtml.cs
-- [ ] T021 [US3] Implement delete page with confirmation and error handling in Pages/TeachAppoEmployees/Delete.cshtml and Pages/TeachAppoEmployees/Delete.cshtml.cs
+- [X] T020 [US3] Implement edit page with immutable keys, validation (including date format validation), and error handling in Pages/TeachAppoEmployees/Edit.cshtml and Pages/TeachAppoEmployees/Edit.cshtml.cs
+- [X] T021 [US3] Implement delete page with confirmation and error handling (including 404 with friendly message if record already deleted) in Pages/TeachAppoEmployees/Delete.cshtml and Pages/TeachAppoEmployees/Delete.cshtml.cs
 
 **Checkpoint**: All user stories independently functional
 
@@ -107,7 +107,7 @@ description: "Task list for Teach Appo Employee CRUD"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T022 [P] Add test run instructions to specs/002-teach-appo-empl-crud/quickstart.md
+- [X] T022 [P] Add test run instructions to specs/002-teach-appo-empl-crud/quickstart.md
 
 ---
 

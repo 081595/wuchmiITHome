@@ -2,6 +2,7 @@ using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using wuchmiITHome.Data;
 using wuchmiITHome.Models;
+using wuchmiITHome.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<wuchmiITHomeContext>(options =>
                 options.UseSqlite(builder.Configuration.GetConnectionString("ArticleContext")));
+builder.Services.AddScoped<TeachAppoEmployeeService>();
 var app = builder.Build();
 
 
@@ -47,3 +49,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
+
+// Make Program class accessible to test project
+public partial class Program { }

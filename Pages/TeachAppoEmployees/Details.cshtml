@@ -1,0 +1,94 @@
+@page "{yr:int}/{idNo}/{birthday:datetime}"
+@model DetailsModel
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>@ViewData["Title"]</h1>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5 class="card-title">@Html.DisplayFor(model => model.TeachAppoEmployee.ChName)</h5>
+                            <p class="text-muted">@Html.DisplayFor(model => model.TeachAppoEmployee.EnName)</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <span class="badge bg-secondary">Yr: @Model.TeachAppoEmployee.Yr</span>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Identity Number (HKID):</strong></label>
+                            <p class="form-control-plaintext">@Html.DisplayFor(model => model.TeachAppoEmployee.IdNo)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Birthday:</strong></label>
+                            <p class="form-control-plaintext">@Html.DisplayFor(model => model.TeachAppoEmployee.Birthday, "Date")</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Employee Number:</strong></label>
+                            <p class="form-control-plaintext">@Html.DisplayFor(model => model.TeachAppoEmployee.EmplNo)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Email:</strong></label>
+                            <p class="form-control-plaintext">
+                                <a href="mailto:@Model.TeachAppoEmployee.Email">@Html.DisplayFor(model => model.TeachAppoEmployee.Email)</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Refresh Token Expiry:</strong></label>
+                            <p class="form-control-plaintext">
+                                @if (Model.TeachAppoEmployee.RefreshTokenExpired.HasValue)
+                                {
+                                    @Html.DisplayFor(model => model.TeachAppoEmployee.RefreshTokenExpired, "DateTime")
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Not set</span>
+                                }
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Created:</strong></label>
+                            <p class="form-control-plaintext">
+                                <small class="text-muted">@Html.DisplayFor(model => model.TeachAppoEmployee.CreateDate, "DateTime")</small>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Last Updated:</strong></label>
+                            <p class="form-control-plaintext">
+                                <small class="text-muted">@Html.DisplayFor(model => model.TeachAppoEmployee.UpdateDate, "DateTime")</small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="mt-3">
+                        <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                        <a asp-page="Edit" asp-route-yr="@Model.TeachAppoEmployee.Yr" asp-route-idNo="@Model.TeachAppoEmployee.IdNo" asp-route-birthday="@Model.TeachAppoEmployee.Birthday.ToString("yyyy-MM-dd")" class="btn btn-warning">Edit</a>
+                        <a asp-page="Delete" asp-route-yr="@Model.TeachAppoEmployee.Yr" asp-route-idNo="@Model.TeachAppoEmployee.IdNo" asp-route-birthday="@Model.TeachAppoEmployee.Birthday.ToString("yyyy-MM-dd")" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

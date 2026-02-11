@@ -76,11 +76,6 @@ As a staff user, I can edit existing record details or delete a record that shou
 
 ## Requirements *(mandatory)*
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
--->
-
 ### Functional Requirements
 
 - **FR-001**: System MUST provide a navigation link to the teach appo employee maintenance page for authorized staff users.
@@ -89,7 +84,7 @@ As a staff user, I can edit existing record details or delete a record that shou
 - **FR-004**: Users MUST be able to create a new record with all required fields and the system MUST prevent duplicate primary keys.
 - **FR-005**: Users MUST be able to edit allowed fields on an existing record while keeping primary key fields immutable.
 - **FR-006**: Users MUST be able to delete a record only after confirming the action.
-- **FR-007**: System MUST show clear validation messages for missing or invalid required fields and must not save invalid records.
+- **FR-007**: System MUST show field-specific validation messages (e.g., "Birthday is required", "Invalid date format", "Duplicate key: record already exists") for missing or invalid required fields and must not save invalid records.
 - **FR-008**: System MUST maintain `create_date` and `update_date` values for records and display them in the detail view.
 
 ### Key Entities *(include if feature involves data)*
@@ -107,15 +102,16 @@ As a staff user, I can edit existing record details or delete a record that shou
 
 - **SC-001**: Authorized users can reach the list page from the main navigation in 2 clicks or fewer.
 - **SC-002**: Users can create a valid record in under 3 minutes on average during acceptance testing.
-- **SC-003**: The list page shows the first page of results within 3 seconds for datasets up to 1,000 records.
-- **SC-004**: At least 95% of edit and delete actions during testing persist correctly without requiring rework.
+- **SC-003**: The list page shows the first page of results within 3 seconds for datasets up to 1,000 records (manual verification acceptable).
+- **SC-004**: At least 95% of edit and delete actions during testing persist correctly without requiring rework (manual verification acceptable).
 
 ## Assumptions
 
-- Access to the maintenance page is limited to existing authorized staff users.
+- Access to the maintenance page is limited to existing authorized staff users. Authorization assumes all authenticated application users have staff access for this feature (no role-based restriction at this stage).
 - Primary key fields (`yr`, `id_no`, `birthday`) are set on creation and cannot be changed later.
 - `seq_no`, `create_date`, and `update_date` are system-managed and read-only in forms.
-- `refresh_token` and `refresh_token_expired` are maintained by staff as needed.
+- `refresh_token` and `refresh_token_expired` are maintained by staff as needed. These fields support external API token refresh workflows; validation requires non-null values but does not enforce token format or expiry logic in this maintenance interface.
+- This feature supports datasets up to approximately 1,000 records with acceptable performance. Larger datasets may require pagination or filtering enhancements in future iterations.
 
 ## Dependencies
 

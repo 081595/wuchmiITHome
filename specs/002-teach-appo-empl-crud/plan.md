@@ -89,6 +89,7 @@ Design decisions:
 
 - EF Core model with composite key (`yr`, `id_no`, `birthday`).
 - Razor Pages CRUD under `Pages/TeachAppoEmployees`.
+- Service layer pattern: Business logic (including validation, duplicate key checks) in `Services/TeachAppoEmployeeService.cs` per constitution Principle II (Model-Driven Design).
 - Server-managed timestamps and read-only fields in UI.
 
 ## Phase 2: Implementation Planning

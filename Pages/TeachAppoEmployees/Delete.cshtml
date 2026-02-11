@@ -1,0 +1,97 @@
+@page "{yr:int}/{idNo}/{birthday:datetime}"
+@model DeleteModel
+@{
+    ViewData["Title"] = "Delete Teach Appo Employee";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-danger">@ViewData["Title"]</h1>
+
+            <div class="alert alert-warning" role="alert">
+                <strong>⚠️ Warning:</strong> This action cannot be undone. The record will be permanently deleted from the system.
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Confirm Deletion</h5>
+                </div>
+                <div class="card-body">
+                    <p>Are you sure you want to delete the following record?</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th>Year</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.Yr)</td>
+                                </tr>
+                                <tr>
+                                    <th>Identity Number</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.IdNo)</td>
+                                </tr>
+                                <tr>
+                                    <th>Birthday</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.Birthday, "Date")</td>
+                                </tr>
+                                <tr>
+                                    <th>Employee Number</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.EmplNo)</td>
+                                </tr>
+                                <tr>
+                                    <th>Chinese Name</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.ChName)</td>
+                                </tr>
+                                <tr>
+                                    <th>English Name</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.EnName)</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>@Html.DisplayFor(model => model.TeachAppoEmployee.Email)</td>
+                                </tr>
+                                <tr>
+                                    <th>Created</th>
+                                    <td>
+                                        <small class="text-muted">
+                                            @Html.DisplayFor(model => model.TeachAppoEmployee.CreateDate, "DateTime")
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Last Updated</th>
+                                    <td>
+                                        <small class="text-muted">
+                                            @Html.DisplayFor(model => model.TeachAppoEmployee.UpdateDate, "DateTime")
+                                        </small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr />
+
+                    <form method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('This will permanently delete the record. Are you absolutely sure?');">
+                            Delete Record
+                        </button>
+                        <a asp-page="Details" asp-route-yr="@Model.TeachAppoEmployee.Yr" 
+                           asp-route-idNo="@Model.TeachAppoEmployee.IdNo" 
+                           asp-route-birthday="@Model.TeachAppoEmployee.Birthday.ToString("yyyy-MM-dd")" 
+                           class="btn btn-secondary">
+                            Cancel - Don't Delete
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-header {
+        border-bottom: 2px solid #dc3545;
+    }
+</style>
