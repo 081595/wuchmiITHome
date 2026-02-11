@@ -35,6 +35,8 @@ using (var scope = app.Services.CreateScope())
 
     try
     {
+        var dbContext = services.GetRequiredService<wuchmiITHomeContext>();
+        dbContext.Database.Migrate();
         SeedData.Initialize(services);
     }
     catch (Exception ex)
