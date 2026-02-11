@@ -1,0 +1,42 @@
+{
+	"name": "ASP.NET Core (.NET 8.0)",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+	
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit",
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.vscode-dotnet-runtime",
+				"kreativ-software.csharpextensions",
+				"jongrant.csharpsortusings",
+				"ms-azuretools.vscode-docker",
+				"EditorConfig.EditorConfig"
+			],
+			"settings": {
+				"dotnet.defaultSolution": "wuchmiITHome.sln"
+			}
+		}
+	},
+
+	"forwardPorts": [5000, 5001],
+	"portsAttributes": {
+		"5000": {
+			"label": "HTTP",
+			"onAutoForward": "notify"
+		},
+		"5001": {
+			"label": "HTTPS",
+			"onAutoForward": "notify"
+		}
+	},
+
+	"postCreateCommand": "dotnet restore && dotnet build",
+
+	"remoteUser": "vscode"
+}
