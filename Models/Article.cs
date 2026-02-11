@@ -19,7 +19,6 @@ namespace wuchmiITHome.Models
         public DateTime ReleaseDate { get; set; }
         public string? Link { get; set; }
         public int Count { get; set; }
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [StringLength(30)]
         public string? Category { get; set; }
     }
