@@ -1,7 +1,7 @@
 # wuchmiITHome Constitution
 <!--
 Sync Impact Report:
-- Version: 1.0.0 (Initial Constitution)
+- Version: 1.0.1 (Database standard updated to SQLite)
 - Ratification Date: 2026-02-11
 - Template placeholders filled: PROJECT_NAME, all 5 PRINCIPLE sections, GOVERNANCE sections
 - Target Project: Personal IT Blog/Learning Management System (ASP.NET Core Razor Pages)
@@ -91,7 +91,7 @@ A personal learning and IT article management system built with ASP.NET Core Raz
 ### Mandatory Stack
 - **Framework**: ASP.NET Core 6.0+ (Razor Pages)
 - **ORM**: Entity Framework Core
-- **Database**: SQL Server (LocalDB for development, Azure SQL/SQL Server for production)
+- **Database**: SQLite (LocalDB for development is not required)
 - **Testing**: xUnit or NUnit for unit tests
 - **Dependency Management**: NuGet packages only
 
@@ -171,4 +171,4 @@ Sometimes principles must be violated for good reasons. Document exceptions:
 
 ---
 
-**Version**: 1.0.0 | **Ratified**: 2026-02-11 | **Last Amended**: 2026-02-11
+**Version**: 1.0.1 | **Ratified**: 2026-02-11 | **Last Amended**: 2026-02-11

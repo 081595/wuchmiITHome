@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Teach Appo Employee CRUD
+  version: 1.0.0
+  description: REST-style contract for teach appo employee maintenance.
+servers:
+  - url: https://localhost:5001
+paths:
+  /teach-appo-employees:
+    get:
+      summary: List teach appo employee records
+      responses:
+        "200":
+          description: List of records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeachAppoEmployee"
+    post:
+      summary: Create a teach appo employee record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeachAppoEmployeeCreate"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeachAppoEmployee"
+        "400":
+          description: Validation error
+  /teach-appo-employees/{yr}/{idNo}/{birthday}:
+    parameters:
+      - name: yr
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: idNo
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: birthday
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+    get:
+      summary: Get a teach appo employee record
+      responses:
+        "200":
+          description: Record details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeachAppoEmployee"
+        "404":
+          description: Not found
+    put:
+      summary: Update a teach appo employee record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeachAppoEmployeeUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeachAppoEmployee"
+        "400":
+          description: Validation error
+        "404":
+          description: Not found
+    delete:
+      summary: Delete a teach appo employee record
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+components:
+  schemas:
+    TeachAppoEmployee:
+      type: object
+      required:
+        - yr
+        - idNo
+        - birthday
+        - emplNo
+        - chName
+        - enName
+        - email
+        - refreshToken
+        - createDate
+        - updateDate
+      properties:
+        yr:
+          type: integer
+        idNo:
+          type: string
+          maxLength: 60
+        birthday:
+          type: string
+          format: date
+        emplNo:
+          type: string
+          maxLength: 6
+        chName:
+          type: string
+          maxLength: 60
+        enName:
+          type: string
+          maxLength: 60
+        email:
+          type: string
+          maxLength: 60
+        refreshToken:
+          type: string
+          maxLength: 60
+        refreshTokenExpired:
+          type: string
+          format: date-time
+          nullable: true
+        seqNo:
+          type: integer
+          readOnly: true
+        createDate:
+          type: string
+          format: date-time
+          readOnly: true
+        updateDate:
+          type: string
+          format: date-time
+          readOnly: true
+    TeachAppoEmployeeCreate:
+      type: object
+      required:
+        - yr
+        - idNo
+        - birthday
+        - emplNo
+        - chName
+        - enName
+        - email
+        - refreshToken
+      properties:
+        yr:
+          type: integer
+        idNo:
+          type: string
+          maxLength: 60
+        birthday:
+          type: string
+          format: date
+        emplNo:
+          type: string
+          maxLength: 6
+        chName:
+          type: string
+          maxLength: 60
+        enName:
+          type: string
+          maxLength: 60
+        email:
+          type: string
+          maxLength: 60
+        refreshToken:
+          type: string
+          maxLength: 60
+        refreshTokenExpired:
+          type: string
+          format: date-time
+          nullable: true
+    TeachAppoEmployeeUpdate:
+      type: object
+      required:
+        - emplNo
+        - chName
+        - enName
+        - email
+        - refreshToken
+      properties:
+        emplNo:
+          type: string
+          maxLength: 6
+        chName:
+          type: string
+          maxLength: 60
+        enName:
+          type: string
+          maxLength: 60
+        email:
+          type: string
+          maxLength: 60
+        refreshToken:
+          type: string
+          maxLength: 60
+        refreshTokenExpired:
+          type: string
+          format: date-time
+          nullable: true
